@@ -5,7 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/go-project/project-ascii/printArg"
+	"github.com/ascii-art/project-ascii/printArg"
+	"github.com/ascii-art/project-ascii/Options"
 )
 
 func isASCII(s string) bool {
@@ -38,6 +39,25 @@ func fineTheme(s string) string {
 
 }
 
+// fineOption take option and look what option file need to go
+func fineOption(s string)int{
+	option := s
+	var index int
+
+	switch option{
+	case "--output":
+		index = 1
+	case "--align":
+		index = 2
+	case "--color":
+		index =3
+	default:
+		index = 0
+	}
+
+	return index
+}
+
 func main() {
 
 	if len(os.Args) == 1 {
@@ -53,7 +73,6 @@ func main() {
 	if len(os.Args) > 2 {
 		Theme = fineTheme(os.Args[2])
 	}
-
 	// Just Print too terminal but not for option
 	if len(os.Args) < 5 {
 		A1 := os.Args[1]
@@ -62,19 +81,36 @@ func main() {
 			printArg.Printer(sliceB[i], Theme)
 		}
 	}
+	Options.outputArg()
 	/*//_______________________________________________\\*\
 	\*\\                                               //*/
 	//Looking at Args 3 if there have right Option
-	var option string
+	/*
 	var object string
-	if len(os.Args) > 3 {
+	if len(os.Args) == 4 {
 		A3 := os.Args[3]
 		sliceA := strings.Split(A3, "=")
 		if len(sliceA) == 2 {
-			option = sliceA[0]
 			object = sliceA[1]
-			fmt.Println(option)
-			fmt.Println(object)
+			indexOption := fineOption(sliceA[0])
+			switch indexOption{
+			case 0:
+				fmt.Println("Option incorrect")
+			case 1:
+				Options.outputArg(os.Args[1],Theme,object)
+			case 2:
+				Options.alignArg(os.Args[1],Theme,object)
+			case 3:
+				Options.colorArg(os.Args[1],Theme,object)
+			default:
+				fmt.Println("Option incorrect")
+			} 
 		}
 	}
+	*/
+
+	//sliceA := strings.Split(os.Args[3], "=")
+
+
+
 }
