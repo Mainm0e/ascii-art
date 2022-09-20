@@ -5,8 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ascii-art/project-ascii/printArg"
-	"github.com/ascii-art/project-ascii/Options"
+	"github.com/WorkShop"
 )
 
 func isASCII(s string) bool {
@@ -40,17 +39,17 @@ func fineTheme(s string) string {
 }
 
 // fineOption take option and look what option file need to go
-func fineOption(s string)int{
+func fineOption(s string) int {
 	option := s
 	var index int
 
-	switch option{
+	switch option {
 	case "--output":
 		index = 1
 	case "--align":
 		index = 2
 	case "--color":
-		index =3
+		index = 3
 	default:
 		index = 0
 	}
@@ -78,14 +77,13 @@ func main() {
 		A1 := os.Args[1]
 		sliceB := strings.Split(A1, "\\n")
 		for i := 0; i < len(sliceB); i++ {
-			printArg.Printer(sliceB[i], Theme)
+			WorkShop.Printer(sliceB[i], Theme)
 		}
 	}
-	Options.outputArg()
 	/*//_______________________________________________\\*\
 	\*\\                                               //*/
 	//Looking at Args 3 if there have right Option
-	/*
+
 	var object string
 	if len(os.Args) == 4 {
 		A3 := os.Args[3]
@@ -93,24 +91,21 @@ func main() {
 		if len(sliceA) == 2 {
 			object = sliceA[1]
 			indexOption := fineOption(sliceA[0])
-			switch indexOption{
+			switch indexOption {
 			case 0:
 				fmt.Println("Option incorrect")
 			case 1:
-				Options.outputArg(os.Args[1],Theme,object)
+				WorkShop.Output(os.Args[1], Theme, object)
 			case 2:
-				Options.alignArg(os.Args[1],Theme,object)
+				WorkShop.Align(os.Args[1], Theme, object)
 			case 3:
-				Options.colorArg(os.Args[1],Theme,object)
+				WorkShop.Color(os.Args[1], Theme, object)
 			default:
 				fmt.Println("Option incorrect")
-			} 
+			}
 		}
 	}
-	*/
 
 	//sliceA := strings.Split(os.Args[3], "=")
-
-
 
 }

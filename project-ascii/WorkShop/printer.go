@@ -1,4 +1,4 @@
-package printArg
+package WorkShop
 
 import (
 	"bufio"
