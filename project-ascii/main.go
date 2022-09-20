@@ -73,7 +73,7 @@ func main() {
 		Theme = fineTheme(os.Args[2])
 	}
 	// Just Print too terminal but not for option
-	if len(os.Args) < 5 {
+	if len(os.Args) < 4 {
 		A1 := os.Args[1]
 		sliceB := strings.Split(A1, "\\n")
 		for i := 0; i < len(sliceB); i++ {
@@ -86,6 +86,7 @@ func main() {
 
 	var object string
 	if len(os.Args) == 4 {
+
 		A3 := os.Args[3]
 		sliceA := strings.Split(A3, "=")
 		if len(sliceA) == 2 {
@@ -105,7 +106,6 @@ func main() {
 			}
 		}
 	}
-
-	//sliceA := strings.Split(os.Args[3], "=")
-
 }
+
+//sliceA := strings.Split(os.Args[3], "=")
