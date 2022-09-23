@@ -56,5 +56,3 @@ func main() {
 		}
 	}
 }
-
-//sliceA := strings.Split(os.Args[3], "=")
